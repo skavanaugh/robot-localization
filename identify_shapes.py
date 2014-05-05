@@ -12,12 +12,12 @@ def get_shape(contours, image_to_color, show_shape=False):
     shape = None
  
     for cnt in contours:
-        approx = cv2.approxPolyDP(cnt,0.01*cv2.arcLength(cnt,True),True)
+        approx = cv2.approxPolyDP(cnt,0.02*cv2.arcLength(cnt,True),True)
         # print len(approx)
         if len(approx) == 4 and cv2.contourArea(approx) > min_shape_size:
             shape = "square"
             cv2.drawContours(image_to_color, [cnt], 0, 255,-1)
-        elif len(approx) > 13 and cv2.contourArea(approx) > min_shape_size:
+        elif len(approx) > 7 and cv2.contourArea(approx) > min_shape_size:
             shape = "circle"
             cv2.drawContours(image_to_color, [cnt], 0, 255,-1)
         elif len(approx) == 3 and cv2.contourArea(approx) > min_shape_size:
