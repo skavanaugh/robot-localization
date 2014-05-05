@@ -1,3 +1,9 @@
+# Code snippets from here
+# http://en.wikibooks.org/wiki/Applied_Robotics/Sensors_and_Perception/Open_CV/Basic_OpenCV_Tutorial
+# Processing triangles in video: http://opencv-srf.blogspot.com/2011/09/object-detection-tracking-using-contours.html
+# How to determine shape size in OpenCV http://stackoverflow.com/questions/19098104/python-opencv2-cv2-wrapper-get-image-size
+# Shapes from here http://www.ziggityzoom.com/activity/make-basic-shapes-flashcards
+
 import cv2
 import numpy
  
@@ -24,7 +30,7 @@ def get_shape(contours, image_to_color, show_shape=False):
             shape = "Hexagon"
             cv2.drawContours(image_to_color, [cnt], 0, 255,-1)  
     if show_shape: 
-        cv2.drawContours(image_to_color, [cnt], 0, 255,-1)
+        cv2.imshow('image_to_color', image_to_color)
          # When you're done looking at the image, use this to close all windows:            cv2.destroyAllWindows()
          
     return shape
@@ -74,11 +80,7 @@ def detect_shape(img_orig, show_shape = False):
     # If you have created a binary image as above and stored it in "img_threshold"
     # the following code will find the contours of your image:
     contours = find_contours(img_threshold)
- 
-    # Here, we are creating a new RBB image to display our results on
-    results_image = new_rgb_image(img_threshold.shape[1], img_threshold.shape[0])
-    cv2.drawContours(results_image, contours, -1, cv2.cv.RGB(255,0,0), 2)
-    
+
     shape = get_shape(contours, img_copy, show_shape)
     
     return shape
