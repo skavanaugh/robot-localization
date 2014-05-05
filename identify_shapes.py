@@ -1,4 +1,4 @@
-# Code snippets from here
+# Code snippets based on these tutorials:
 # http://en.wikibooks.org/wiki/Applied_Robotics/Sensors_and_Perception/Open_CV/Basic_OpenCV_Tutorial
 # Processing triangles in video: http://opencv-srf.blogspot.com/2011/09/object-detection-tracking-using-contours.html
 # How to determine shape size in OpenCV http://stackoverflow.com/questions/19098104/python-opencv2-cv2-wrapper-get-image-size
@@ -15,19 +15,19 @@ def get_shape(contours, image_to_color, show_shape=False):
         approx = cv2.approxPolyDP(cnt,0.01*cv2.arcLength(cnt,True),True)
         # print len(approx)
         if len(approx) == 4 and cv2.contourArea(approx) > min_shape_size:
-            shape = "Rectangle"
+            shape = "square"
             cv2.drawContours(image_to_color, [cnt], 0, 255,-1)
         elif len(approx) > 13 and cv2.contourArea(approx) > min_shape_size:
-            shape = "Circle"
+            shape = "circle"
             cv2.drawContours(image_to_color, [cnt], 0, 255,-1)
         elif len(approx) == 3 and cv2.contourArea(approx) > min_shape_size:
-            shape = "Triangle"
+            shape = "triangle"
             cv2.drawContours(image_to_color, [cnt], 0, 255,-1)  
         elif len(approx) == 5 and cv2.contourArea(approx) > min_shape_size:
-            shape = "Pentagon"
+            shape = "pentagon"
             cv2.drawContours(image_to_color, [cnt], 0, 255,-1)
         elif len(approx) == 6 and cv2.contourArea(approx) > min_shape_size:
-            shape = "Hexagon"
+            shape = "hexagon"
             cv2.drawContours(image_to_color, [cnt], 0, 255,-1)  
     if show_shape: 
         cv2.imshow('image_to_color', image_to_color)
